@@ -1,4 +1,5 @@
 # OAuth1 Code to access data from the Twitter API...
+# Hey, that's lihe's modification
 import requests_oauthlib
 import webbrowser
 import json
@@ -104,14 +105,14 @@ try:
     # This code tries to see if you can read the credentials from the file
     # (If you have credentials for the wrong user, or expired credentials
     # just delete the file creds.txt and run this code again)
-    f = open("creds.txt", 'r')
+    f = open("creds.txt", 'r',encoding = "utf-8")
     (client_key, client_secret, resource_owner_key, resource_owner_secret, verifier) = json.loads(f.read())
     f.close()
 except:
     # If not, you'll have to get them!
     # and then, save them in a file called creds.txt
     tokens = get_tokens()
-    f = open("creds.txt", 'w')
+    f = open("creds.txt", 'w', encoding = "utf-8")
     f.write(json.dumps(tokens))
     f.close()
     (client_key, client_secret, resource_owner_key, resource_owner_secret, verifier) = tokens
